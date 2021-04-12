@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CS411 - Churan He - Stage 4</title>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <style>
+      .navbar-inner {
+          float: none;
+          margin: 0 auto;
+          display: table;
+          table-layout: fixed;
+      }
+      .container {
+          max-width: none !important;
+          width: 800px;
+          min-width: 800px;
+      }
+      .navbar { margin: 0; }
+      .main { margin-top: 15px; }
+      .navbar-inverse form { color: #999; }
+      h3 { margin-top: 0px; }
+      h4 { margin-top: 5px; }
+      .search-well {
+          width: 600px;
+          margin: 60px auto 60px auto;
+      }
+      .search-field { width: 300px; }
+      .form-space { margin: 5px 0; }
+      .form-more-space { margin: 15px 0 5px 0; }
+      .well p { margin: 0 0 5px 0; }
+    </style>
+  </head>
+  <body>
+        <div class="navbar navbar-inverse navbar-static-top">
+            <div class="container">    
+                <div class="navbar-header"> 
+                    <a id="churan-lnk" class="navbar-brand" href="/churan">churan</a>
+                </div>
+            </div>
+        </div>
+        <div class="container main">
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="search-well">
+                        <h3>User Table Interfaces</h3>
+                        <h4>Create User (Create):</h4>
+                        <p>Create a new user in the database.<p>
+                        <form action="/churan/create" method="post" class="form-inline">{% csrf_token %}
+                            <p style = "color:red;">WARNING: DO NOT REUSE YOUR PASSWORD AT HERE FOR SECURITY REASONS!</p>
+                            <div class="form-group">
+                            <input id="email" name="email" type="text" placeholder="example@example.com" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <input id="username" name="username" type="text" placeholder="Username" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <input id="password" name="password" type="password" placeholder="Password" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <button id="create-btn" type="submit" class="btn btn-default">Create</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="search-well">
+                        <h4>Change Password (Update):</h4>
+                        <p>Change user password in the database.<p>
+                        <form action="/churan/update" method="post" class="form-inline">{% csrf_token %}
+                            <p style = "color:red;">WARNING: DO NOT REUSE YOUR PASSWORD AT HERE FOR SECURITY REASONS!</p>
+                            <div class="form-group">
+                            <input id="username" name="username" type="text" placeholder="Username" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <input id="oldpassword" name="oldpassword" type="password" placeholder="Old Password" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <input id="newpassword" name="newpassword" type="password" placeholder="New Password" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <button id="update-btn" type="submit" class="btn btn-default">Update</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="search-well">
+                        <h4>Remove User (Delete):</h4>
+                        <p>Delete user from the database.<p>
+                        <form action="/churan/delete" method="post" class="form-inline">{% csrf_token %}
+                            <div class="form-group">
+                            <input id="username" name="username" type="text" placeholder="Username" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <input id="password" name="password" type="password" placeholder="Password" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <button id="delete-btn" type="submit" class="btn btn-default">Delete</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="search-well">
+                        <h4>Show All User Infos (Read, Debug):</h4>
+                            <p style = "color:red;">WARNING: WILL DISPLAY PASSWORD! ONLY FOR DEBUG PURPOSE</p>
+                            <div class="form-group">
+                            <form action="/churan/showalluser" class="form-inline">
+                            <button id="create-btn" class="btn btn-lg btn-primary">Show</button>
+                            </form>
+                            </div>
+                    </div>
+                    <div class="search-well">
+                        <h3>Course Table Interfaces</h3>
+                        <h4>Add New Course (Create):</h4>
+                        <p>Add a new course to the database.<p>
+                        <form action="/churan/addcourse" method="post" class="form-inline">{% csrf_token %}
+                            <div class="form-group">
+                            <label for="course_number">Course Number:</label><br>
+                            <input id="course_number" name="course_number" type="text" placeholder="CS411" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <label for="course_name">Course Name:</label><br>
+                            <input id="course_name" name="course_name" type="text" placeholder="Database Systems" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <label for="dept_name">Department:</label><br>
+                            <input id="dept_name" name="dept_name" type="text" placeholder="CS" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <label for="course_GPA">GPA:</label><br>
+                            <input id="course_GPA" name="course_GPA" type="text" placeholder="3.53" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <label for="credits">Credits:</label><br>
+                            <input id="credits" name="credits" type="text" placeholder="3" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <button id="add-btn" type="submit" class="btn btn-default">Add</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="search-well">
+                        <h4>Search Course (Read):</h4>
+                        <p>Find course from the database.<p>
+                        <form action="/churan/findcourse" method="post" class="form-inline">{% csrf_token %}
+                            <div class="form-group">
+                            <label for="course_number">Department / Course Number:</label><br>
+                            <input id="course_number" name="course_number" type="text" placeholder="CS or CS411" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <button id="search-btn" type="submit" class="btn btn-default">Search</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="search-well">
+                        <h4>Update Course (Update):</h4>
+                        <p>Update course info from the database.<p>
+                        <form action="/churan/updatecourse" method="post" class="form-inline">{% csrf_token %}
+                            <div class="form-group">
+                            <label for="course_number">Course Number:</label><br>
+                            <input id="course_number" name="course_number" type="text" placeholder="CS411" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <label for="course_GPA">New GPA:</label><br>
+                            <input id="course_GPA" name="course_GPA" type="text" placeholder="4.0" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <label for="credits">New Credits:</label><br>
+                            <input id="credits" name="credits" type="text" placeholder="4" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <button id="update-btn" type="submit" class="btn btn-default">Update</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="search-well">
+                        <h4>Delete Course (Delete):</h4>
+                        <p>Delete course from the database.<p>
+                        <form action="/churan/deletecourse" method="post" class="form-inline">{% csrf_token %}
+                            <div class="form-group">
+                            <label for="course_number">Course Number:</label><br>
+                            <input id="course_number" name="course_number" type="text" placeholder="CS411" required class="form-control">
+                            </div><br>
+                            <div class="form-group">
+                            <button id="delete-btn" type="submit" class="btn btn-default">Remove</button>
+                            </div>
+                        </form>
+                    </div>
+
+                   <div class="search-well">
+                    <h4>Advance Query From Stage 3:</h4>
+                    <p>Find sections with high A rate (above its department average), and their instructor with ratings in a given semester.<p>
+                    <form action="/churan/advancequery" method="post" class="form-inline">{% csrf_token %}
+                        <input id="semester" type="text" name="semester" placeholder="Semester" autofocus class="form-control input-lg search-field">
+                        <input id="search-btn" type="submit" value="Search" class="btn btn-lg btn-primary">
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>  
+</body>
+</html>

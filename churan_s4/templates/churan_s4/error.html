@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CS411 - Churan He - Error</title>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <style>
+      .navbar-inner {
+          float: none;
+          margin: 0 auto;
+          display: table;
+          table-layout: fixed;
+      }
+      .container {
+          max-width: none !important;
+          width: 800px;
+          min-width: 800px;
+      }
+      .navbar { margin: 0; }
+      .main { margin-top: 15px; }
+      .navbar-inverse form { color: #999; }
+      h3 { margin-top: 0px; }
+      h4 { margin-top: 5px; }
+      .main-msg {
+          width: 600px;
+          margin: 60px auto 60px auto;
+      }
+      .search-field { width: 300px; }
+      .form-space { margin: 5px 0; }
+      .form-more-space { margin: 15px 0 5px 0; }
+      .well p { margin: 0 0 5px 0; }
+    </style>
+  </head>
+  <body>
+        <div class="navbar navbar-inverse navbar-static-top">
+            <div class="container">    
+                <div class="navbar-header"> 
+                    <a id="churan-lnk" class="navbar-brand" href="/churan">churan</a>
+                </div>
+            </div>
+        </div>
+        <div class="container main">
+            <div class="row">
+                <div class="col-xs-8">
+                   <div class="main-msg">
+                    <h4>{{error_msg}}</h4>
+                    <a href='/churan'>Try again</a>
+                    </div>
+                </div>
+            </div>
+        </div>  
+</body>
+</html>

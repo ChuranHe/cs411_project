@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CS411 - Churan He - Show All Users</title>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <style>
+      .navbar-inner {
+          float: none;
+          margin: 0 auto;
+          display: table;
+          table-layout: fixed;
+      }
+      .container {
+          max-width: none !important;
+          width: 800px;
+          min-width: 800px;
+      }
+      .navbar { margin: 0; }
+      .main { margin-top: 15px; }
+      .navbar-inverse form { color: #999; }
+      h3 { margin-top: 0px; }
+      h4 { margin-top: 5px; }
+      .main-msg {
+          width: 600px;
+          margin: 60px auto 60px auto;
+      }
+      .well p { margin: 0 0 5px 0; }
+      table, th, td {
+        border: 1px solid black;
+        }
+        table.center {
+        margin-left: auto;
+        margin-right: auto;
+        }
+    </style>
+  </head>
+  <body>
+        <div class="navbar navbar-inverse navbar-static-top">
+            <div class="container">    
+                <div class="navbar-header"> 
+                    <a id="churan-lnk" class="navbar-brand" href="/churan">churan</a>
+                </div>
+            </div>
+        </div>
+        <div class="container main">
+            <div class="row">
+                <div class="col-xs-8">
+                   <div class="main-msg">
+                    <h4>Course(s) info related to "{{course_number}}":</h4>
+                    <a href='/churan'>Return</a>
+                    <table style="width:100%">
+                        <tr>
+                        <th>Course Number </th>
+                        <th>Course Name</th>
+                        <th>Department</th> 
+                        <th>GPA</th>
+                        <th>Credits</th>
+                        </tr>
+                        {% for row in rows %}
+                        <tr>
+                        <td>{{ row.course_number }}</td>
+                        <td>{{ row.course_name }}</td>
+                        <td>{{ row.dept_name }}</td>
+                        <td>{{ row.course_GPA }}</td>
+                        <td>{{ row.credits }}</td>    
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>  
+</body>
+</html>
